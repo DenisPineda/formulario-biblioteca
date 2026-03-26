@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha de Préstamo de Libros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background: #fff;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .row div {
+            flex: 1;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .mensaje {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Ficha de Préstamo de Libros</h1>
+
+    <form id="formulario">
+
+        <label>Nombre del usuario</label>
+        <input type="text" id="nombre" placeholder="Ingrese nombre completo" required>
+
+        <label>Tipo de usuario</label>
+        <select id="tipo" required>
+            <option value="">Seleccione</option>
+            <option>Estudiante</option>
+            <option>Docente</option>
+            <option>Administrativo</option>
+            <option>Externo</option>
+        </select>
+
+        <label>Número de identificación</label>
+        <input type="text" id="id" required>
+
+        <div class="row">
+            <div>
+                <label>Teléfono</label>
+                <input type="tel" id="telefono" required>
+            </div>
+
+            <div>
+                <label>Correo electrónico</label>
+                <input type="email" id="correo" required>
+            </div>
+        </div>
+
+        <label>Título del libro</label>
+        <input type="text" id="titulo" required>
+
+        <label>Autor</label>
+        <input type="text" id="autor" required>
+
+        <label>Código del libro</label>
+        <input type="text" id="codigo" required>
+
+        <div class="row">
+            <div>
+                <label>Fecha de préstamo</label>
+                <input type="date" id="prestamo" required>
+            </div>
+
+            <div>
+                <label>Fecha de devolución</label>
+                <input type="date" id="devolucion" required>
+            </div>
+        </div>
+
+        <label>Observaciones</label>
+        <textarea id="observaciones" rows="3"></textarea>
+
+        <label>Firma del usuario</label>
+        <input type="text" placeholder="Nombre como firma" required>
+
+        <label>Firma del encargado</label>
+        <input type="text" placeholder="Nombre como firma" required>
+
+        <button type="submit">Enviar Formulario</button>
+
+        <div class="mensaje" id="mensaje"></div>
+
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("formulario");
+    const mensaje = document.getElementById("mensaje");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        // Validación simple
+        const nombre = document.getElementById("nombre").value;
+
+        if(nombre.length < 3){
+            alert("El nombre es muy corto");
+            return;
+        }
+
+        mensaje.textContent = "✅ Formulario enviado correctamente";
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
